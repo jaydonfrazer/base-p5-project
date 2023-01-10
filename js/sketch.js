@@ -1,15 +1,15 @@
-////Declare variables for wave////
+////-- Declare variables for wave --////
 let x = 0;
 let y = 0;
-let theta = 0;
-let inc = 0.05;
+let theta = 0; // Measured angle
+let inc = 0.05; // Increment added to move the wave forward
 let offset = 0; // the amount offset from beginning of wave
-let amplitude;
-let frequency;
+let amplitude; // Range of the wave
+let frequency; // Number of repeats in wave
 let maxAngle;
 
 function setup() {
-    ////Adjust frequency of waves////
+    ////-- Adjust frequency of waves --////
     amplitude = windowHeight / 12;
     frequency = windowWidth / 4;
     maxAngle = (windowWidth / frequency) * TWO_PI;
@@ -19,7 +19,7 @@ function draw() {
     background(0);
     noStroke();
     let length = 30;
-    ////Create wave////
+    ////-- Create wave --////
     while (theta < maxAngle + offset) {
         // amplitude = sin(theta)
         amplitude = ((theta-offset)/maxAngle) * (windowHeight/2);
