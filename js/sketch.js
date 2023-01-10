@@ -1,24 +1,31 @@
+////Declare variables for wave////
+let x = 0;
+let y = 0;
+let theta = 0;
+let inc = 0.05;
+let offset = 0; // the amount offset from beginning of wave
+let amplitude;
+let frequency;
+let maxAngle;
+
 function setup() {
-    createCanvas(windowWidth, windowHeight);
-    ////Declare variables for sine wave////
-    let x = 0;
-    let y = 0;
-    //Curren angle
-    let theta = 0;
-
     ////Adjust frequency of waves////
-    let amplitude = windowHeight/12;
-    let frequency = windowWidth/4;
-    let maxAngle = (windowWidth/frequency) * TWO_PI;
-
-    ////Create wave////
-    while(theta < maxAngle){
-        y = sin(theta) * amplitude;
-        ellipse(x, y + height/2, 16);
-        theta += 0.2;
-        x = (theta/maxAngle) * windowWidth;
-    }
+    amplitude = windowHeight / 12;
+    frequency = windowWidth / 4;
+    maxAngle = (windowWidth / frequency) * TWO_PI;
+    createCanvas(windowWidth, windowHeight);
 }
 function draw() {
-
+    background(0);
+    noStroke();
+    fill(255, 255, 255);
+    ////Create wave////
+    while (theta < maxAngle + offset) {
+        y = sin(theta) * amplitude;
+        ellipse(x, y + height / 2, 16);
+        theta += 0.2;
+        x = ((theta - offset) / maxAngle) * windowWidth;
+    }
+    offset += inc;
+    theta = offset;
 }
