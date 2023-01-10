@@ -31,13 +31,16 @@ function draw() {
             //ellipse(x, y + height / 2, 16);
             square(x, height/2 + y, 16);
         }
+
         // create Cosine Wave
         for (i = length; i > 0; i--) {
             y = cos(theta - (i * 0.05)) * amplitude;
             fill(255, 255 - (255/length * i), 0);
             //ellipse(x, y + height / 2, 16);
             square(x, height/2 + y, 16);
+            
         }
+
         theta += 0.2;
         x = ((theta - offset) / maxAngle) * windowWidth;
     }
