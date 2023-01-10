@@ -18,11 +18,29 @@ function setup() {
 function draw() {
     background(0);
     noStroke();
-    fill(255, 255, 255);
     ////Create wave////
     while (theta < maxAngle + offset) {
-        y = sin(theta) * amplitude;
+        // Sine wave 4
+        y = sin(theta - 0.6) * amplitude;
+        fill(0, 50, 0);
         ellipse(x, y + height / 2, 16);
+        // Sine wave 3
+        y = sin(theta - 0.4) * amplitude;
+        fill(0, 100, 0);
+        ellipse(x, y + height / 2, 16);
+        // Sine wave 2
+        y = sin(theta - 0.2) * amplitude;
+        fill(0, 150, 0);
+        ellipse(x, y + height / 2, 16);
+        // Sine wave 1
+        y = sin(theta) * amplitude;
+        fill(0, 255, 0);
+        ellipse(x, y + height / 2, 16);
+        // Cosine wave
+        y = cos(theta) * amplitude;
+        fill(255, 255, 0);
+        ellipse(x, y + height / 2, 16);
+
         theta += 0.2;
         x = ((theta - offset) / maxAngle) * windowWidth;
     }
