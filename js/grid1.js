@@ -5,10 +5,10 @@ function setup() {
     strokeWeight(5)
     let x = 0;
     let y = 0;
-    let xVariation = 0;
-    let yVariation = 0;
-    let widthVariation = 0;
-    let heightVariation = 0;
+    // let xVariation = 0;
+    // let yVariation = 0;
+    // let widthVariation = 0;
+    // let heightVariation = 0;
     let sizes = [CELL_SIZE, CELL_SIZE * 2, CELL_SIZE * 3];
     let currentWidth = random(sizes);
     let currentHeight = random(sizes);
