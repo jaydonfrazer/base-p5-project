@@ -6,32 +6,89 @@ function setup() {
     let x = 0;
     let y = 0;
     noStroke();
+
+    //// -Randomize Color Palette before loop starts- ////
+
+
+    //Set main color
+    let randR = random(175);
+    let randG = random(175);
+    let randB = random(175);
+
+    let Color1 = [randR, randG, randB];
+    let Color2 = [randR*0.75, randG*0.75, randB*0.75];
+    let Color3 = [randR*2, randG*2, randB*2];
+
+    
     while (y < height) {
         while (x < width) {
-            let randomChoice = Math.floor(random(3));
 
-            let randR = random(255);
-            let randG = random(255);
-            let randB = random(255);
+            //// -Randomizations- ////
+            let squareChoice;
+            let squareChance = Math.random();
+            // 60% Chance for a plain square
+            if (squareChance < 0.6){
+                squareChoice = 0;
+            }
+            // 40% Chance for a detailed square
+            else
+            {
+                squareChoice = Math.floor(random(3)) + 1;
+            }
 
-            let randSize = random(CELL_SIZE);
+            let colorChoice;
+            let colorChance = Math.random();
+            //40% Chance for Color1
+            if (colorChance < 0.4){
+                colorChoice = 0;
+            }
+            //20% Chance for Color2
+            else if (colorChance < 0.6){
+                colorChoice = 1;
+            }
+            // 20% Chance for Color3
+            else{
+                colorChoice = 2;
+            }
+
+            let colorVariation = 50;
+
+            let randSize = random() * (CELL_SIZE/2 - CELL_SIZE/4) + CELL_SIZE/4;
+
+            //// -Settings- ////
             let offset = (CELL_SIZE - randSize) / 2;
+            let mainColor;
+            let secondaryColor;
 
-            let mainColor = color(randR, randG, randB);
-            let secondaryColor = color(randR-50, randG-50, randB-50)
-
-            switch (randomChoice) {
+            //Select Color
+            switch (colorChoice) {
                 case 0:
+                    mainColor = color(Color1[0]+random(-colorVariation, colorVariation), Color1[1]+random(-colorVariation, colorVariation), Color1[2]+random(-colorVariation, colorVariation));
+                    secondaryColor = color(Color1[0]+random(-colorVariation, colorVariation)*0.75, Color1[1]+random(-colorVariation, colorVariation)*0.75, Color1[2]+random(-colorVariation, colorVariation)*0.75);
+                    break;
+                case 1:
+                    mainColor = color(Color2[0]+random(-colorVariation, colorVariation), Color2[1]+random(-colorVariation, colorVariation), Color2[2]+random(-colorVariation, colorVariation));
+                    secondaryColor = color(Color2[0]+random(-colorVariation, colorVariation)*0.75, Color2[1]+random(-colorVariation, colorVariation)*0.75, Color2[2]+random(-colorVariation, colorVariation)*0.75);
+                    break;
+                case 2:
+                    mainColor = color(Color3[0]+random(-colorVariation, colorVariation), Color3[1]+random(-colorVariation, colorVariation), Color3[2]+random(-colorVariation, colorVariation));
+                    secondaryColor = color(Color3[0]+random(-colorVariation, colorVariation)*0.75, Color3[1]+random(-colorVariation, colorVariation)*0.75, Color3[2]+random(-colorVariation, colorVariation)*0.75);
+                    break;
+            }
+
+            //Select Square Pattern
+            switch (squareChoice) {
+                case 0:
+                    fill(mainColor)
+                    rect(x, y, CELL_SIZE, CELL_SIZE);
+                    break;
+                case 1:
                     fill(mainColor)
                     rect(x, y, CELL_SIZE, CELL_SIZE);
                     fill(secondaryColor)
                     ellipse(x + CELL_SIZE / 2, y + CELL_SIZE / 2, CELL_SIZE-randSize, CELL_SIZE-randSize);
                     fill(mainColor)
-                    ellipse(x + 40, y + 40, CELL_SIZE / 2 - randSize, CELL_SIZE / 2 - randSize);
-                    break;
-                case 1:
-                    fill(mainColor)
-                    rect(x, y, CELL_SIZE, CELL_SIZE);
+                    ellipse(x + CELL_SIZE / 2, y + CELL_SIZE / 2, CELL_SIZE / 2 - randSize+15, CELL_SIZE / 2 - randSize+15);
                     break;
                 case 2:
                     fill(mainColor)
@@ -39,6 +96,13 @@ function setup() {
                     fill(secondaryColor)
                     rect(x + offset, y + offset, randSize, randSize);
                     break;
+                case 3:
+                    fill(mainColor)
+                    rect(x, y, CELL_SIZE, CELL_SIZE);
+                    fill(secondaryColor)
+                    ellipse(x + CELL_SIZE / 2, y + CELL_SIZE / 2, CELL_SIZE-randSize, CELL_SIZE-randSize);
+                    break;
+
             }
             x += CELL_SIZE;
         }
