@@ -1,8 +1,14 @@
 function setup() {
     let colours = [color('#FF0000'), color('#00FF00'), color('#FFFC00'), color('#00FFFF'), color('#FFC000')];
-    createCanvas(800, 800);
+    createCanvas(1200, 1200);
     background(255)
-    const CELL_SIZE = 80;
+    let randomSize = Math.floor(random() * (14 - 4) + 4);
+    //Check if size is even number
+    while (randomSize % 2!==0){
+        randomSize = Math.floor(random() * (14 - 4) + 4);
+    }
+    const CELL_SIZE = randomSize*10;
+    console.log(CELL_SIZE);
     let x = 0;
     let y = 0;
     noStroke();
@@ -11,9 +17,9 @@ function setup() {
 
 
     //Set main color
-    let randR = random(175);
-    let randG = random(175);
-    let randB = random(175);
+    let randR = random(155);
+    let randG = random(155);
+    let randB = random(155);
 
     let Color1 = [randR, randG, randB];
     let Color2 = [randR*0.75, randG*0.75, randB*0.75];
@@ -33,7 +39,7 @@ function setup() {
             // 40% Chance for a detailed square
             else
             {
-                squareChoice = Math.floor(random(3)) + 1;
+                squareChoice = Math.floor(random(4)) + 1;
             }
 
             let colorChoice;
@@ -88,7 +94,7 @@ function setup() {
                     fill(secondaryColor)
                     ellipse(x + CELL_SIZE / 2, y + CELL_SIZE / 2, CELL_SIZE-randSize, CELL_SIZE-randSize);
                     fill(mainColor)
-                    ellipse(x + CELL_SIZE / 2, y + CELL_SIZE / 2, CELL_SIZE / 2 - randSize+15, CELL_SIZE / 2 - randSize+15);
+                    ellipse(x + CELL_SIZE / 2, y + CELL_SIZE / 2, CELL_SIZE / 2 - randSize+randSize/2, CELL_SIZE / 2 - randSize+randSize/2);
                     break;
                 case 2:
                     fill(mainColor)
@@ -102,7 +108,12 @@ function setup() {
                     fill(secondaryColor)
                     ellipse(x + CELL_SIZE / 2, y + CELL_SIZE / 2, CELL_SIZE-randSize, CELL_SIZE-randSize);
                     break;
-
+                case 4:
+                    fill(mainColor)
+                    rect(x, y, CELL_SIZE, CELL_SIZE);
+                    fill(secondaryColor)
+                    triangle(x, y, x+CELL_SIZE, y+CELL_SIZE, x, y+CELL_SIZE);
+                    break;
             }
             x += CELL_SIZE;
         }
