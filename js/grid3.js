@@ -57,7 +57,7 @@ function setup() {
                 colorChoice = 2;
             }
 
-            let colorVariation = 50;
+            let colorVariation = 15;
 
             let randSize = random() * (CELL_SIZE/2 - CELL_SIZE/4) + CELL_SIZE/4;
 
@@ -70,15 +70,15 @@ function setup() {
             switch (colorChoice) {
                 case 0:
                     mainColor = color(Color1[0]+random(-colorVariation, colorVariation), Color1[1]+random(-colorVariation, colorVariation), Color1[2]+random(-colorVariation, colorVariation));
-                    secondaryColor = color(Color1[0]+random(-colorVariation, colorVariation)*0.75, Color1[1]+random(-colorVariation, colorVariation)*0.75, Color1[2]+random(-colorVariation, colorVariation)*0.75);
+                    secondaryColor = color(Color1[0]*0.75+random(-colorVariation, colorVariation), Color1[1]*0.75+random(-colorVariation, colorVariation), Color1[2]*0.75+random(-colorVariation, colorVariation));
                     break;
                 case 1:
                     mainColor = color(Color2[0]+random(-colorVariation, colorVariation), Color2[1]+random(-colorVariation, colorVariation), Color2[2]+random(-colorVariation, colorVariation));
-                    secondaryColor = color(Color2[0]+random(-colorVariation, colorVariation)*0.75, Color2[1]+random(-colorVariation, colorVariation)*0.75, Color2[2]+random(-colorVariation, colorVariation)*0.75);
+                    secondaryColor = color(Color2[0]*0.75+random(-colorVariation, colorVariation), Color2[1]*0.75+random(-colorVariation, colorVariation), Color2[2]*0.75+random(-colorVariation, colorVariation));
                     break;
                 case 2:
                     mainColor = color(Color3[0]+random(-colorVariation, colorVariation), Color3[1]+random(-colorVariation, colorVariation), Color3[2]+random(-colorVariation, colorVariation));
-                    secondaryColor = color(Color3[0]+random(-colorVariation, colorVariation)*0.75, Color3[1]+random(-colorVariation, colorVariation)*0.75, Color3[2]+random(-colorVariation, colorVariation)*0.75);
+                    secondaryColor = color(Color3[0]*0.75+random(-colorVariation, colorVariation), Color3[1]*0.75+random(-colorVariation, colorVariation), Color3[2]*0.75+random(-colorVariation, colorVariation));
                     break;
             }
 

@@ -16,8 +16,10 @@ function setup() {
     while(y < height){
         while(x < width){
             fill(random(colours));
+
             // rect(x+random(-xVariation, xVariation), y+random(-yVariation, yVariation),
             // CELL_SIZE + random(-widthVariation, widthVariation), CELL_SIZE + random(-heightVariation, heightVariation));
+
             rect(x, y, currentWidth, currentHeight);
             x+= currentWidth;
             let availableWidth = width - x;
@@ -32,7 +34,7 @@ function setup() {
         currentHeight = random(sizes);
                     //correct cell size if going outside canvas
         while(currentHeight > availableHeight){
-            currentHeight-=CELL_SIZE;
+            currentHeight -= CELL_SIZE;
         }
         x=0;
     }
